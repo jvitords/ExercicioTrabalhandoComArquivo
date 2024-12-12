@@ -27,7 +27,7 @@ public class Program {
 			String lerLinhaDoArquivoTxt = lerArquivoTxt.readLine(); // vai ler linha por linha do arquivo 
 			while (lerLinhaDoArquivoTxt != null) {
 				
-				String[] itensSeparados = lerLinhaDoArquivoTxt.split(","); // separando os itens por virgula
+				String[] itensSeparados = lerLinhaDoArquivoTxt.split(",");
 				String nomeDoproduto = itensSeparados[0];
 				double valor = Double.parseDouble(itensSeparados[1]);
 				int quantidade = Integer.parseInt(itensSeparados[2]);
@@ -50,7 +50,7 @@ public class Program {
 		// Criar caminho da pasta onde irá receber o arquivo csv
 		
 		String caminhoDaPasta = "C:\\Users\\JoãoVitorDuarteSanto\\Documents\\Estudos\\ExercicioDeArquivos\\";
-		boolean criacaoDaPasta =  new File(caminhoDaPasta + "\\PastaCSV_CriadoPorMim").mkdir(); // "mkdir" cria uma nova pasta para colocar o arquivo lá dentro
+		boolean criacaoDaPasta =  new File(caminhoDaPasta + "\\PastaCSV_CriadoPorMim").mkdir(); // "mkdir" cria uma nova pasta
 		
 		if(criacaoDaPasta == true) {
 			System.out.println("Pasta criada com sucesso!");
@@ -62,12 +62,12 @@ public class Program {
 		// Criar o novo arquivo(.csv) com o produto e o preço total(quantidade * valor)
 		
 		String caminhoParaCriacaoDoArquivo = "C:\\Users\\JoãoVitorDuarteSanto\\Documents\\Estudos\\ExercicioDeArquivos\\PastaCSV_CriadoPorMim\\";
-		File arquivoCSV = new File(caminhoParaCriacaoDoArquivo + "\\produtoCSV_criadoPorMim.csv"); // criando o arquivo no caminho especificado e com nome que coloquei no argumento
+		File arquivoCSV = new File(caminhoParaCriacaoDoArquivo + "\\produtoCSV_criadoPorMim.csv");
 		
 		try(BufferedWriter criarArquivoCSV = new BufferedWriter(new FileWriter(arquivoCSV))){
 			
-			for(Produto produto : listaDeProdutos) { // vai passar por cada produto e escrever no arquivo conforme os comandos abaixo
-				criarArquivoCSV.write(produto.getNomeDoProduto() + "," + produto.valorTotal()); // escrevendo apenas o nome e o valor total(método da classe "Produto")
+			for(Produto produto : listaDeProdutos) {
+				criarArquivoCSV.write(produto.getNomeDoProduto() + "," + produto.valorTotal());
 				criarArquivoCSV.newLine();
 			}
 			System.out.println("Arquivo criada com sucesso");
